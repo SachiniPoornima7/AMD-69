@@ -35,6 +35,7 @@ Prerequisites
 ### 1️⃣ Clone the Repository  
 bash
 git clone https://github.com/SachiniPoornima7/AMD-69.git
+
 cd amd-final
 
 
