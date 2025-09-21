@@ -3,19 +3,27 @@ import { useLoader } from "@/context/LoaderContext";
 import { createTask, getTaskId, updateTask } from "@/services/taskService";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from "react-native";
 
-const TaskFrormScreen = () => {
+const TaskFormScreen = () => {
   const { id } = useLocalSearchParams<{ id?: string }>();
   const isNew = !id || id === "new";
-  //   const params = useLocalSearchParams()
-  //   params.id
-  // null || new -> save
-  // 1234 -> update
+
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+
   const router = useRouter();
   const { hideLoader, showLoader } = useLoader();
+  const { user } = useAuth();
 
   useEffect(() => {
     const load = async () => {
@@ -35,14 +43,11 @@ const TaskFrormScreen = () => {
     load();
   }, [id]);
 
-  const { user, loading } = useAuth();
-
   const handleSubmit = async () => {
-    if (!title.trim) {
+    if (!title.trim()) {
       Alert.alert("Validation", "Title is required");
       return;
     }
-    // description validation
 
     try {
       showLoader();
@@ -61,32 +66,58 @@ const TaskFrormScreen = () => {
   };
 
   return (
-    <View className="flex-1 w-full p-5">
-      <Text className="text-2xl font-bold">
-        {isNew ? "Add Task" : "Edit Task"}
-      </Text>
-      <TextInput
-        placeholder="Title"
-        className="p-2 my-2 border border-gray-400 rounded-md"
-        value={title}
-        onChangeText={setTitle}
-      />
-      <TextInput
-        placeholder="Description"
-        className="p-2 my-2 border border-gray-400 rounded-md"
-        value={description}
-        onChangeText={setDescription}
-      />
-      <TouchableOpacity
-        className="px-6 py-3 my-2 bg-blue-400 rounded-md"
-        onPress={handleSubmit}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      className="flex-1 bg-gray-100"
+    >
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        className="px-6 py-10"
       >
-        <Text className="text-xl text-white">
-          {isNew ? "Add Task" : "Update Task"}
+        {/* Header */}
+        <Text className="text-3xl font-extrabold text-blue-600 mb-6">
+          {isNew ? "Add Workout" : "Edit Workout"}
         </Text>
-      </TouchableOpacity>
-    </View>
+
+        {/* Input Card */}
+        <View className="bg-white p-5 rounded-2xl shadow-md mb-5">
+          <Text className="text-gray-700 font-semibold mb-2">
+            Workout Title
+          </Text>
+          <TextInput
+            placeholder="Enter workout title"
+            className="px-4 py-3 text-base bg-gray-50 border border-gray-300 rounded-lg focus:border-blue-500"
+            value={title}
+            onChangeText={setTitle}
+          />
+        </View>
+
+        <View className="bg-white p-5 rounded-2xl shadow-md mb-6">
+          <Text className="text-gray-700 font-semibold mb-2">Description</Text>
+          <TextInput
+            placeholder="Enter workout description"
+            className="px-4 py-3 text-base bg-gray-50 border border-gray-300 rounded-lg focus:border-blue-500"
+            value={description}
+            onChangeText={setDescription}
+            multiline
+            numberOfLines={4}
+            textAlignVertical="top"
+          />
+        </View>
+
+        {/* Submit Button */}
+        <TouchableOpacity
+          onPress={handleSubmit}
+          activeOpacity={0.8}
+          className="bg-blue-600 py-4 rounded-2xl shadow-lg shadow-blue-400/40"
+        >
+          <Text className="text-white text-lg font-semibold text-center">
+            {isNew ? "Add Workout" : "Update Workout"}
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
-export default TaskFrormScreen;
+export default TaskFormScreen;
