@@ -43,6 +43,6 @@ Contributions are welcome! Please submit a pull request or issue.
 This project is licensed under the MIT License.
 
 👨‍💻 Author
-[Malik Bandara](https://github.com/MalikBandara)
+[Malik Bandara](https://github.com/SachiniPoornima7/AMD-69.git)
 
 Let me know if you'd like me to add anything!
