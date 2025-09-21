@@ -1,12 +1,15 @@
 import { AuthProvider } from "@/context/AuthContext";
+import { LoaderProvider } from "@/context/LoaderContext";
 import { Slot } from "expo-router";
 import "./../global.css";
 
 const Layout = () => {
   return (
-    <AuthProvider>
-      <Slot />
-    </AuthProvider>
+    <LoaderProvider>
+      <AuthProvider>
+        <Slot />
+      </AuthProvider>
+    </LoaderProvider>
   );
 };
 

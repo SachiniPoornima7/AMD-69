@@ -1,54 +1,21 @@
 import { useLoader } from "@/context/LoaderContext";
-import { deleteTask, getAllTask, taskRef } from "@/services/taskService";
+import { deleteTask, taskRef } from "@/services/workoutService";
 import { Task } from "@/types/task";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useRouter, useSegments } from "expo-router";
+import { useRouter } from "expo-router";
 import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import {
-  Alert,
-  Pressable,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 const TaskScreen = () => {
   const [task, setTask] = useState<Task[]>([]);
-
   const router = useRouter();
-
-  const segment = useSegments();
-
   const { showLoader, hideLoader } = useLoader();
-
-  const handleFetchData = async () => {
-    // await getTask()
-    //   .then((data) => {
-    //     console.log(data);
-    //     setTask(data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    try {
-      showLoader();
-      const data = await getAllTask();
-      console.log("Fetched tasks: ", data);
-      setTask(data);
-    } catch (error) {
-      console.log("Error fetching tasks: ", error);
-    } finally {
-      hideLoader();
-    }
-  };
 
   useEffect(() => {
     const unsubscribe = onSnapshot(taskRef, (snap) => {
       const taskList = snap.docs.map((task) => {
         const data = task.data();
-        // Prefer root fields, fallback to nested taskData if present
         return {
           id: task.id,
           title:
@@ -65,19 +32,16 @@ const TaskScreen = () => {
   }, []);
 
   const handelDelete = async (id: string) => {
-    Alert.alert("Are you sure you want to delete this task?", "", [
-      {
-        text: "Cancel",
-        style: "cancel",
-      },
+    Alert.alert("Delete Task", "Are you sure you want to delete this task?", [
+      { text: "Cancel", style: "cancel" },
       {
         text: "Delete",
+        style: "destructive",
         onPress: async () => {
           try {
             showLoader();
             await deleteTask(id);
             Alert.alert("Task deleted successfully");
-            handleFetchData();
           } catch (error) {
             console.error("Error deleting task:", error);
             Alert.alert("Failed to delete task");
@@ -90,43 +54,67 @@ const TaskScreen = () => {
   };
 
   return (
-    <View className="flex-1 w-full p-5">
-      <Text className="text-center">Task Screen</Text>
-      <ScrollView className="mt-4">
-        {task.map((task) => {
-          return (
-            <View key={task.id} className="p-4 mb-2 bg-gray-100 rounded-md">
-              <Text className="text-lg font-semibold">{task.title}</Text>
-              <Text className="py-1 text-sm text-gray-700 ">
-                {task.description}
+    <View className="flex-1 bg-gray-100 px-5 pt-10">
+      {/* Header */}
+      <Text className="text-3xl font-extrabold text-blue-600 text-center mb-6">
+        Your Workouts
+      </Text>
+
+      {/* Task List */}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {task.length === 0 ? (
+          <Text className="text-center text-gray-500 mt-10">
+            No workouts yet. Tap + to add one!
+          </Text>
+        ) : (
+          task.map((task) => (
+            <View
+              key={task.id}
+              className="bg-white p-5 mb-4 rounded-2xl shadow-md shadow-gray-300"
+            >
+              <Text className="text-lg font-semibold text-gray-900 mb-1">
+                {task.title}
               </Text>
-              <View className="flex-row ">
+              <Text className="text-gray-600 mb-3">{task.description}</Text>
+
+              {/* Action Buttons */}
+              <View className="flex-row justify-end space-x-4">
                 <TouchableOpacity
-                  className="px-4 py-2 bg-blue-500 rounded-md"
+                  className="flex-row items-center"
                   onPress={() => router.push(`/(dashboard)/tasks/${task.id}`)}
                 >
-                  <Text>Edit</Text>
+                  <MaterialIcons name="edit" size={22} color="#2563eb" />
+                  <Text className="ml-1 text-blue-600 font-medium">Edit</Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity
-                  className="px-4 py-2 ml-3 bg-red-500 rounded-md"
-                  onPress={() => handelDelete(task.id || "")}
+                  className="flex-row items-center"
+                  onPress={() => {
+                    console.log("Deleting task:", task.id);
+                    handelDelete(task.id || "");
+                  }}
                 >
-                  <Text>Delete</Text>
+                  <MaterialIcons
+                    name="delete-outline"
+                    size={22}
+                    color="#dc2626"
+                  />
+                  <Text className="ml-1 text-red-600 font-medium">Delete</Text>
                 </TouchableOpacity>
               </View>
             </View>
-          );
-        })}
+          ))
+        )}
       </ScrollView>
-      <Pressable
-        className="absolute p-5 m-5 bg-blue-500 rounded-full bottom-5 right-5"
-        style={{ elevation: 5 }}
-        onPress={() => {
-          router.push("/(dashboard)/tasks/new");
-        }}
+
+      {/* Floating Action Button */}
+      <TouchableOpacity
+        className="absolute bottom-6 right-6 bg-blue-600 p-5 rounded-full shadow-lg shadow-blue-400/40"
+        activeOpacity={0.8}
+        onPress={() => router.push("/(dashboard)/tasks/new")}
       >
-        <MaterialIcons name="add" size={28} color={"#fff"} />
-      </Pressable>
+        <MaterialIcons name="add" size={30} color="#fff" />
+      </TouchableOpacity>
     </View>
   );
 };

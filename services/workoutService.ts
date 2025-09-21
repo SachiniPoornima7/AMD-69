@@ -47,8 +47,9 @@ export const getTaskId = async (id: string) => {
 };
 
 export const deleteTask = async (id: string) => {
-  const taskDocRef = doc(db, "tasks", id);
-  return await deleteDoc(taskDocRef);
+  if (!id) throw new Error("Task ID is required for deletion");
+  const taskDoc = doc(db, "tasks", id);
+  await deleteDoc(taskDoc);
 };
 
 export const taskRef = collection(db, "tasks");

@@ -13,6 +13,6 @@ export const login = (email: string, password: string) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-export const logOut = (email: string, password: string) => {
-  return signOut(auth);
+export const logOut = () => {
+  return signOut(auth); // no email/password needed
 };

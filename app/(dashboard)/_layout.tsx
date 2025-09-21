@@ -4,7 +4,7 @@ import React from "react";
 const tabs = [
   { label: "Home", name: "home", icons: "home" },
   { label: "Task", name: "tasks", icons: "check-circle" },
-  { label: "Profile", name: "profile", icons: "person" },
+
   { label: "Settings", name: "settings", icons: "settings" },
 ] as const;
 
