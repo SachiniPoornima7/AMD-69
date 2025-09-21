@@ -26,11 +26,73 @@ Prerequisites
 - Expo CLI (npm install -g expo-cli)
 - Android Studio / Xcode for simulator OR a physical device with *Expo Go app*
 
-Installation
-1. Clone the repository: `git clone https:                                              
-2. Install dependencies: npm install or yarn install
-3. Configure Firebase: Create a Firebase project, enable Authentication and Cloud Firestore, and replace the Firebase config in firebaseConfig.ts
-4. Start Expo: npx expo start or expo start
+
+
+---
+
+## 🚀 Getting Started  
+
+### 1️⃣ Clone the Repository  
+bash
+git clone https://github.com/MalikBandara/amd-final.git
+cd amd-final
+
+
+
+---
+
+### 2️⃣ Install Dependencies
+
+npm install
+# or
+yarn install
+
+---
+
+### 3️⃣ Configure Firebase
+
+Create a Firebase project at Firebase Console
+
+Enable Authentication (Email/Password)
+
+Enable Cloud Firestore
+
+Copy your Firebase config and replace it inside firebaseConfig.ts
+
+
+---
+
+### 4️⃣ Start Expo
+
+npx expo start
+# or
+expo start
+
+
+---
+
+### 📱 Running on Devices
+▶️ Android Emulator
+
+npx expo run:android
+
+📲 Physical Device
+
+Install Expo Go from Play Store / App Store
+
+Scan the QR code shown in the terminal or Expo Dev Tools
+
+
+---
+
+### 🏗️ Build & Deploy
+📦 Expo Build (Classic)
+
+expo build:android
+
+### 🚀 EAS Build
+
+eas build -p android --profile preview
 
                           
 - Android Emulator: npx expo run:android
