@@ -38,7 +38,7 @@ const Register = () => {
   return (
     <View className="justify-center flex-1 p-6 bg-gray-100">
       <Text className="mb-8 text-3xl font-extrabold text-center text-blue-700">
-        Register for Task Manager
+        Register for GymAPP
       </Text>
       <View className="mb-4">
         <TextInput

@@ -25,8 +25,8 @@ const Index = () => {
       />
 
       {/* App Title */}
-      <Text className="text-4xl font-extrabold text-white tracking-wide mb-4">
-        Gym Tracker
+      <Text className="text-3xl font-extrabold text-white tracking-wide mb-4">
+        GymAPP
       </Text>
 
       {/* Subtitle */}

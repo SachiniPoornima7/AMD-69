@@ -3,7 +3,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 const tabs = [
   { label: "Home", name: "home", icons: "home" },
-  { label: "Task", name: "tasks", icons: "check-circle" },
+  { label: "Workouts", name: "tasks", icons: "check-circle" },
 
   { label: "Settings", name: "settings", icons: "settings" },
 ] as const;
