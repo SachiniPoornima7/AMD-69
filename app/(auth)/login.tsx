@@ -39,7 +39,7 @@ const Login = () => {
   return (
     <View className="justify-center flex-1 p-6 bg-gray-100">
       <Text className="mb-8 text-3xl font-extrabold text-center text-blue-700">
-        Login to Task Manager
+        Login to Gym App
       </Text>
       <View className="mb-4">
         <TextInput
@@ -59,7 +59,7 @@ const Login = () => {
         />
       </View>
       <TouchableOpacity
-        className="py-3 mb-4 bg-blue-600 rounded-lg shadow-md active:bg-blue-700"
+        className="py-3 mb-4 bg-blue-600 rounded-lg shadow-md active:bg-black"
         onPress={handelLogin}
       >
         {isLoading ? (
