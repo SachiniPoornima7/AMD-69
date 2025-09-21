@@ -3,7 +3,7 @@
 Trainer Gym App is a React Native mobile application built with *Expo Router* that allows trainers to create, manage, and assign workout plans to clients. The app includes *authentication, **trainer-only features*, and a clean UI.
 
 🎥 Demo Video
-📌 [Watch on YouTube](https://youtu.be/vyzfHMrkzEc?si=k2deZSvLY4XhXuCn)
+📌 [Watch on YouTube](https://youtu.be/Gls0vZ-9V8I)
 
 ✨ Features
 - 🔐 *Trainer authentication* (Login & Sign Up with Firebase)
