@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+Here's a README.md file for the Trainer Gym App:
+🏋️‍♀️ Trainer Gym App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Trainer Gym App is a React Native mobile application built with *Expo Router* that allows trainers to create, manage, and assign workout plans to clients. The app includes *authentication, **trainer-only features*, and a clean UI.
 
-## Get started
+🎥 Demo Video
+📌 [Watch on YouTube](https://youtu.be/vyzfHMrkzEc?si=k2deZSvLY4XhXuCn)
 
-1. Install dependencies
+✨ Features
+- 🔐 *Trainer authentication* (Login & Sign Up with Firebase)
+- 🏋️‍♀️ *Workout plan creation and management*
+- 👥 *Client management*
+- 📝 *Progress tracking and notes*
 
-   ```bash
-   npm install
-   ```
+🛠️ Tech Stack
+- *Frontend:* React Native, Expo Router, Tailwind CSS
+- *Backend:* Firebase Firestore
+- *Authentication:* Firebase Auth (Email/Password)
+- *Icons:* Lucide React Native
+- *State Management:* React Context API, React useState / useEffect
+- *Navigation:* Expo Router (Stack Navigator)
 
-2. Start the app
+🚀 Getting Started
+Prerequisites
+- Node.js >= 18
+- npm >= 9 or Yarn
+- Expo CLI (npm install -g expo-cli)
+- Android Studio / Xcode for simulator OR a physical device with *Expo Go app*
 
-   ```bash
-   npx expo start
-   ```
+Installation
+1. Clone the repository: `git clone https:                                              
+2. Install dependencies: npm install or yarn install
+3. Configure Firebase: Create a Firebase project, enable Authentication and Cloud Firestore, and replace the Firebase config in firebaseConfig.ts
+4. Start Expo: npx expo start or expo start
 
-In the output, you'll find options to open the app in a
+                          
+- Android Emulator: npx expo run:android
+- Physical Device: Install Expo Go, scan the QR code
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+🤝 Contributing
+Contributions are welcome! Please submit a pull request or issue.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+📄 License
+This project is licensed under the MIT License.
 
-## Get a fresh project
+👨‍💻 Author
+[Malik Bandara](https://github.com/MalikBandara)
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Let me know if you'd like me to add anything!
