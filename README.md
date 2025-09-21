@@ -96,12 +96,5 @@ expo build:android
 eas build -p android --profile preview
 
                           
-- Android Emulator: npx expo run:android
-- Physical Device: Install Expo Go, scan the QR code
 
-🤝 Contributing
-Contributions are welcome! Please submit a pull request or issue.
-
-📄 License
-This project is licensed under the MIT License.
 
