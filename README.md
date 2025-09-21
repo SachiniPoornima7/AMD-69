@@ -1,4 +1,3 @@
-Here's a README.md file for the Trainer Gym App:
 🏋️‍♀️ Trainer Gym App
 
 Trainer Gym App is a React Native mobile application built with *Expo Router* that allows trainers to create, manage, and assign workout plans to clients. The app includes *authentication, **trainer-only features*, and a clean UI.
