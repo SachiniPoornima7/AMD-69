@@ -93,6 +93,8 @@ expo build:android
 
 ### 🚀 EAS Build
 
+link to builder - https://drive.google.com/drive/folders/1zaKYnfK1wWvPmG-6XNEL-ApaMrj6zBAt?usp=sharing
+
 eas build -p android --profile preview
 
                           
